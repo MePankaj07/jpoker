@@ -89,7 +89,7 @@ fetch("http://dev.justicepoker.com/api/v1/gameplay/available-game-table-category
           Hey Shubham !</Text>
 
 
-      </View>
+      </View><View style={{paddingBottom:20}}>
       <Carousel
               // ref={(c) => { this._carousel = c; }}
               data={['assets/h1.jpeg','assets/h1.jpeg']}
@@ -97,24 +97,19 @@ fetch("http://dev.justicepoker.com/api/v1/gameplay/available-game-table-category
                 return (
                     <View 
                       style={{backgroundColor:'#FFF'}}>
-                      {console.log(item)}
-                      <ParallaxImage
-                    source={{ uri: item }}
-                    containerStyle={styles.imageContainer}
-                    style={styles.image}
-                    parallaxFactor={0.4} 
-                />
+                    <Image source={require('./assets/h1.jpeg')} style={{
+                    width:'100%',
+                    height:80,}} />
                         {/* <Text style={styles.title}>{ item}</Text> */}
                     </View>
                 );}
               }
-              sliderWidth={screenWidth}
-              sliderHeight={screenWidth}
-              itemWidth={screenWidth - 60}
-              style={{backgroundColor:'#FFF'}}
-
-              hasParallaxImages={true}
+              sliderWidth={screenWidth} 
+              sliderHeight={100}
+              itemWidth={screenWidth - 60} 
+              
       />
+      </View>
 
       {/* <View height='2%' />
       <Text style={{ color: '#fff', fontSize: 22, paddingTop: 7, paddingHorizontal: 10, fontFamily: 'Roboto', fontWeight: "600" }}>
@@ -150,6 +145,7 @@ fetch("http://dev.justicepoker.com/api/v1/gameplay/available-game-table-category
       <Ionicons name="person-outline" size={24} color="#af901e" />
       
       </View>
+      
 
     </SafeAreaView>
   );

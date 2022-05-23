@@ -1,13 +1,15 @@
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, Image,FlatList } from 'react-native';
+import { StyleSheet, Text,Dimensions, View, SafeAreaView, StatusBar, Image,FlatList } from 'react-native';
 import React from 'react'; 
-import Label, {Orientation} from "react-native-label";
+import Label, {Orientation} from "react-native-label"; 
+import { AntDesign,Ionicons} from '@expo/vector-icons';
+import Carousel, { ParallaxImage } from 'react-native-snap-carousel';
 
 
 
 
 export default function App() {
 
-
+  const { width: screenWidth } = Dimensions.get('window');
   const [dataArray, setDataArray] = React.useState([]);
   const fetchrecords=()=>{
     var myHeaders = new Headers();
@@ -41,7 +43,7 @@ fetch("http://dev.justicepoker.com/api/v1/gameplay/available-game-table-category
     title="Hold'EM"
     color="#f4d573" 
     distance={50}
-    extent={0}
+    extent={0 }
   >
        <View style={{flexDirection:'row',justifyContent:'space-around',paddingVertical:20,backgroundColor:'#272727',marginTop:10}}>
         
@@ -88,6 +90,31 @@ fetch("http://dev.justicepoker.com/api/v1/gameplay/available-game-table-category
 
 
       </View>
+      <Carousel
+              // ref={(c) => { this._carousel = c; }}
+              data={['assets/h1.jpeg','assets/h1.jpeg']}
+              renderItem={({item, index}) => {
+                return (
+                    <View 
+                      style={{backgroundColor:'#FFF'}}>
+                      {console.log(item)}
+                      <ParallaxImage
+                    source={{ uri: item }}
+                    containerStyle={styles.imageContainer}
+                    style={styles.image}
+                    parallaxFactor={0.4} 
+                />
+                        {/* <Text style={styles.title}>{ item}</Text> */}
+                    </View>
+                );}
+              }
+              sliderWidth={screenWidth}
+              sliderHeight={screenWidth}
+              itemWidth={screenWidth - 60}
+              style={{backgroundColor:'#FFF'}}
+
+              hasParallaxImages={true}
+      />
 
       {/* <View height='2%' />
       <Text style={{ color: '#fff', fontSize: 22, paddingTop: 7, paddingHorizontal: 10, fontFamily: 'Roboto', fontWeight: "600" }}>
@@ -115,7 +142,14 @@ fetch("http://dev.justicepoker.com/api/v1/gameplay/available-game-table-category
           //   </View>
           // )}
         />
-
+        
+        
+      <View style={{backgroundColor:'#3c4046',flexDirection:'row',justifyContent:'space-around',height:50,alignItems:'center'}}>
+      <AntDesign name="home" size={24} color="#4f5259" />
+      <Ionicons name="md-wallet-outline" size={24} color="#4f5259" />
+      <Ionicons name="person-outline" size={24} color="#af901e" />
+      
+      </View>
 
     </SafeAreaView>
   );
